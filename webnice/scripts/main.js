@@ -1,7 +1,6 @@
 alert('ضربة معلم!!');
 
 var myImage = document.querySelector('img');
-
 myImage.onclick = function() {
   var mySrc = myImage.getAttribute('src');
   if(mySrc === 'images/amr.gif') {
@@ -10,6 +9,7 @@ myImage.onclick = function() {
     myImage.setAttribute ('src', 'images/amr.gif');
   }
 }
+
 var myButton = document.querySelector('button');
 var myHeading = document.querySelector('h1');
 function setUserName() {
@@ -21,8 +21,9 @@ if(!localStorage.getItem('name')) {
   setUserName();
 } else {
   var storedName = localStorage.getItem('name');
-  myHeading.textContent = 'Bles up, ' + storedName;
+  myHeading.textContent = 'Bless up, ' + storedName;
 }
+
 myButton.onclick = function() {
   setUserName();
 }
