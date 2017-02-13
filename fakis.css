@@ -1,0 +1,30 @@
+body {
+  color: black;
+  background-color: yellow;
+  margin-top: 2em;
+  padding: 2em;
+  text-align: center;
+}
+
+.main-title {
+  color: red;
+}
+
+h1 {
+  color: blue;
+}
+
+div {
+  width: 50%;
+  background-color: purple;
+  text-align: center;
+  height: 20em;
+  padding: 2em;
+  position: absolute;
+  left: 18em;
+}
+
+p {
+  text-align: center;
+  padding: 1em;
+}
