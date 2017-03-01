@@ -1,30 +1,39 @@
 body {
   color: black;
   background-color: yellow;
-  margin-top: 2em;
   padding: 2em;
-  text-align: center;
-}
-
-.main-title {
-  color: red;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 h1 {
   color: blue;
+  margin: inherit;
+  text-align: center;
 }
 
-div {
-  width: 50%;
-  background-color: purple;
-  text-align: center;
-  height: 20em;
-  padding: 2em;
+.square {
+  background-color: grey;
+  position: relative;
+  width: 30%;
+  padding-bottom: 40%;
+  float: left;
+  overflow: hidden;
+}
+
+.content {
   position: absolute;
-  left: 18em;
+  height: 80%;
+  width: 90%;
+  padding: 5% 5%;
+  clear: both;
+  text-align: center;
 }
 
 p {
-  text-align: center;
-  padding: 1em;
+  padding: 2em;
 }
