@@ -84,10 +84,9 @@ Make sure the settings match the following:
 
 ![q][t]
 
-![yes][s Run `npm get prefix` and input it in the **Global Installation Node** box in the settings
+![yes][s] Run `npm get prefix` and input it in the **Global Installation Node** box in the settings
 
 `apm install autoprefixer`
-
 `apm install stylefmt`
 
 [1]: https://iterm2.com
