@@ -10,7 +10,7 @@ A **function** is a way of wrapping a piece of _program_ in a **value**. It help
 
 ### What's a _nested scope_?
 
-A _nested scope_ is as a _scope_ within another. A _local scope_ can identify all the _local scopes_ within it. The **variables** in blocks around a **function's** definition are within a **function's** _scope_, including the **variables** within the **function** as well as the **variables** at the top of the **program**. This is **_lexical scoping_**. Moreover, **functions** are the sole objects in **JavaScript** that create new _scopes_. Furthermore, **recursion** can be useful when dealing with problems that require plural branches, which can in turn have their own sub-branches.
+A _nested scope_ is a _scope_ within another. A _local scope_ can identify all the _local scopes_ within it. The **variables** in blocks around a **function's** definition are within a **function's** _scope_, including the **variables** within the **function** as well as the **variables** at the top of the **program**. This is **_lexical scoping_**. Moreover, **functions** are the sole objects in **JavaScript** that create new _scopes_. Furthermore, **recursion** can be useful when dealing with problems that require plural branches, which can in turn have their own sub-branches.
 
 ### What's a **declaration notation** and where it placed in the _control flow_?
 
