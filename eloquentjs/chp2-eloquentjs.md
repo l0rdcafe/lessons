@@ -12,7 +12,7 @@ A **variable** is a way for a **JavaScript** _program_ to latch onto and save _d
 
 ## What are **functions**?
 
-**Functions** are pieces of _program_ wrapped in a **value**, said **values** run the _program_ by calling them. An example is the **variable** _console.log_, which outputs a _program's_ result.
+**Functions** are pieces of _program_ wrapped in a **value**, said **values** run the _program_ through a **function call** within it. An example is the **variable** _console.log_, which outputs a _program's_ result. A **function** produces a _value_ when it **returns** it, otherwise it produces an undefined _value_.
 
 ### What's the _control flow_ and how can you change it?
 
@@ -20,11 +20,11 @@ The _control flow_ of a _program_ is the order in which the _program's_ executed
 
 ## What are **conditionals**?
 
-**Conditionals** are **statements** used to change a _program's control flow_ from linear execution to a **conditional** execution based on **Boolean values**, offering two routes depending on an _expression's_ **Boolean value**.
+**Conditionals** are **statements** used to change a _program's control flow_ from linear execution to a **conditional** execution based on **Boolean values**, offering two routes depending on an _expression's_ **Boolean value**. The executing statements wrapped in curly brackets are **blocks**.
 
 ### What's a _loop_ and how can you make one, what are **do** and _while_ and **_for_** _loops_?
 
-A _loop_ is a method of _control flow_ structure that repeats the _program_ until it meets its terminating condition. You can define a _loop_ condition using the _while_ **keyword** and specifying an _expression_ as the _loop's_ condition. Similarly, _while_ **keywords**, a **do** _control structure_ executes the _program's_ body at least once and checks to see if it reaches its terminating condition or not after the first execution. Lastly, a **_for_** _loop_ is a shorthand version of the _while_ **keyword** that's written like **'for (var i = '2'; i < 4; i++ ) console.log(i);'**. You should use **_for_** _loops_ when you know how the exact number of _loops_ you want to carry out, meanwhile _while loops_ should be use when you don't know the specific **value**.
+A _loop_ is a method of _control flow_ structure that repeats the _program_ until it meets its terminating condition. You can define a _loop_ condition using the _while_ **keyword** and specifying an _expression_ as the _loop's_ condition. Like _while_ **keywords**, a **do** _control structure_ executes the _program's_ body at least once and checks to see if it reaches its terminating condition or not after the first execution. Lastly, a **_for_** _loop_ is a shorthand version of the _while_ **keyword** that's written like `for (var i = '2'; i < 4; i++ )` console.log(i);'. You should use **_for_** _loops_ when you know how the exact number of _loops_ you want to carry out, meanwhile _while loops_ should be use when you don't know the specific **value**.
 
 #### How do you **break** out of a _loop_?
 
