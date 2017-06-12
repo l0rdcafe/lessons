@@ -142,3 +142,51 @@ function nth(list, number) {
 
   return returnNumber;
 }
+
+function isSameSize(obj1, obj2) {
+  var counter = 0;
+  for (prop in obj1) {
+    counter += 1;
+    for (prop in obj2) {
+      counter -= 1;
+    }
+  }
+  if (counter !== 0) {
+    return false;
+  }
+}
+
+function deepEqual(obj1, obj2) {
+  function isSameSize(obj1, obj2) {
+    if (Object.getOwnPropertyNames(obj1).length !== Object.getOwnPropertyNames(obj2).length) {
+      return isSameObj = false;
+    }
+  }
+
+  var comparisonResults = [];
+  var isSame;
+  for (prop in obj1) {
+    isSame = obj1[prop] == obj2[prop];
+    comparisonResults.push(isSame);
+  }
+  isSameObj = true;
+  comparisonResults.forEach(function (isSame) {
+    if (!isSame) {
+      isSameObj = false;
+    }
+  });
+  return isSameObj;
+}
+
+/* Chapter 5 */
+
+var arrays = [
+    [1, 2, 3],
+    [4, 5],
+    [6]
+];
+console.log(arrays.reduce(function (n) {
+  var conactArray = [];
+  n = arrays.length;
+  arrays.concat(arrays[n]);
+}), 0);
