@@ -146,12 +146,6 @@ function nth(list, number) {
 }
 
 function deepEqual(obj1, obj2) {
-  function isSameSize(obj1, obj2) {
-    if (Object.getOwnPropertyNames(obj1).length !== Object.getOwnPropertyNames(obj2).length) {
-      return isSameObj = false;
-    }
-  }
-
   var comparisonResults = [];
   var isSame;
   for (prop in obj1) {
@@ -160,7 +154,7 @@ function deepEqual(obj1, obj2) {
   }
   isSameObj = true;
   comparisonResults.forEach(function (isSame) {
-    if (!isSame) {
+    if (!isSame || Object.getOwnPropertyNames(obj1).length !== Object.getOwnPropertyNames(obj2).length) {
       isSameObj = false;
     }
   });
