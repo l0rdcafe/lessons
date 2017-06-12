@@ -168,8 +168,25 @@ var arrays = [
     [4, 5],
     [6]
 ];
-console.log(arrays.reduce(function (n) {
-  var conactArray = [];
-  n = arrays.length;
-  arrays.concat(arrays[n]);
-}), 0);
+arrays.reduce(function (a, b) {
+  return a.concat(b);
+});
+
+
+function average(array) {
+  function plus(a, b) {
+    return a + b;
+  }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function (person) {
+  byName[person.mother] = person.died - person.born;
+});
+
+ancestry.filter(function hasKnownMother(person) {
+  var momAges = [];
+  momAges.push(byName[person.mother]);
+  console.log(momAges);
+});
