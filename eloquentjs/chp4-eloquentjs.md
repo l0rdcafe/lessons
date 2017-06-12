@@ -14,8 +14,8 @@ The **unary operator** `delete` deletes _properties_ of an **object**, here's an
 
 The **phi** coefficient provides a formula to calculate the correlation between two **variables** at a time giving a value from -1 to 1, indicating a negative or positive correlation. Here's a much better [explanation.][1]
 
-##### What's the **arguments object**?
+##### What are the `arguments`, `window` and `Math` **objects**?
 
-Whenever a **function** call happens, a special **variable** named `arguments` exists in the program environment.
+Whenever a **function** call happens, a special **variable** named `arguments` exists in the program environment. It has a `length` property but unlike an _array_, doesn't have `indexOf` or `slice` **methods** on it. The `Math` **object** contains mathematical **methods** and others, such as `Math.random`, `Math.min`, etc... The `window` **object variable** refers to the **global object** of the program as stored on browsers as a **DOM relic**.
 
 [1]: http://eloquentjavascript.net/04_data.html#h_YwedOm6SqZ
