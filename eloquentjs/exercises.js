@@ -138,22 +138,11 @@ function prepend(element, list) {
 }
 
 function nth(list, number) {
-  var returnNumber = list.number;
-
-  return returnNumber;
-}
-
-function isSameSize(obj1, obj2) {
-  var counter = 0;
-  for (prop in obj1) {
-    counter += 1;
-    for (prop in obj2) {
-      counter -= 1;
-    }
+  var tempList = list;
+  for (i = 0; i < number; i += 1) {
+    tempList = tempList.rest;
   }
-  if (counter !== 0) {
-    return false;
-  }
+  return tempList.value;
 }
 
 function deepEqual(obj1, obj2) {
