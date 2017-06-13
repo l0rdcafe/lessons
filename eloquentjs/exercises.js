@@ -147,14 +147,21 @@ function nth(list, number) {
 
 function deepEqual(obj1, obj2) {
   var comparisonResults = [];
+  var isSameObj = true;
   var isSame;
+  if (Object.getOwnPropertyNames(obj1).length !== Object.getOwnPropertyNames(obj2).length) {
+    isSameObj = false;
+  }
   for (prop in obj1) {
-    isSame = obj1[prop] == obj2[prop];
+    if (typeof obj1[prop] === 'object' && typeof obj2[prop] === 'object') {
+      isSame = deepEqual(obj1[prop], obj2[prop]);
+    } else {
+      isSame = obj1[prop] === obj2[prop];
+    }
     comparisonResults.push(isSame);
   }
-  isSameObj = true;
   comparisonResults.forEach(function (isSame) {
-    if (!isSame || Object.getOwnPropertyNames(obj1).length !== Object.getOwnPropertyNames(obj2).length) {
+    if (!isSame) {
       isSameObj = false;
     }
   });
@@ -190,3 +197,23 @@ ancestry.filter(function hasKnownMother(person) {
   momAges.push(byName[person.mother]);
   console.log(momAges);
 });
+
+function every(array, condition) {
+  var result = true;
+  array.forEach(function everyArray(value) {
+    if (value !== condition) {
+      result = false;
+    }
+  });
+  return result;
+}
+
+function some(array, condition) {
+  var result = false;
+  array.forEach(function someArray(value) {
+    if (value === condition) {
+      result = true;
+    }
+  });
+  return result;
+}
