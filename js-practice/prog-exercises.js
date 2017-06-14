@@ -145,19 +145,34 @@ function filterLongWords(n, array) {
 
 // #16
 function phrasePalindrome(string) {
-    // To be Continued...
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var charString = [];
+  string.toLowerCase().split('').forEach(function (char) {
+    if (alphabet.indexOf(char) !== -1) {
+      charString.push(char);
+    }
+  });
+  if (charString.join('') === charString.reverse().join('')) {
+    return true;
+  }
+  return false;
 }
 
 // #17
 function pangram(string) {
-  var result = true;
-  var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var sentence = string.split('');
-  sentence.filter(function (a) {
-
+  var charLetters;
+  var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var stringChars = {};
+  string.toLowerCase().split('').forEach(function (c) {
+    stringChars[c] = 1;
   });
-
-  return result;
+  for (i = 0; i < letters.length; i += 1) {
+    charLetters = letters[i];
+    if (stringChars[charLetters] !== 1) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // #18
@@ -173,4 +188,91 @@ function beers99() {
     beers -= 1;
   }
   return song;
+}
+
+// #19
+function charFreq(string) {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var stringChars = {};
+  var counter = 1;
+  string.toLowerCase().split('').filter(function (c) {
+    for (i = 0; i < alphabet.length; i += 1) {
+      if (c === alphabet[i]) {
+        stringChars[c] = counter;
+        counter += 1;
+      }
+    }
+  });
+  return stringChars;
+}
+
+// #20
+function decode(string) {
+  var key = {
+    a: 'n',
+    b: 'o',
+    c: 'p',
+    d: 'q',
+    e: 'r',
+    f: 's',
+    g: 't',
+    h: 'u',
+    i: 'v',
+    j: 'w',
+    k: 'x',
+    l: 'y',
+    m: 'z',
+    n: 'a',
+    o: 'b',
+    p: 'c',
+    q: 'd',
+    r: 'e',
+    s: 'f',
+    t: 'g',
+    u: 'h',
+    v: 'i',
+    w: 'j',
+    x: 'k',
+    y: 'l',
+    z: 'm',
+    A: 'N',
+    B: 'O',
+    C: 'P',
+    D: 'Q',
+    E: 'R',
+    F: 'S',
+    G: 'T',
+    H: 'U',
+    I: 'V',
+    J: 'W',
+    K: 'X',
+    L: 'Y',
+    M: 'Z',
+    N: 'A',
+    O: 'B',
+    P: 'C',
+    Q: 'D',
+    R: 'E',
+    S: 'F',
+    T: 'G',
+    U: 'H',
+    V: 'I',
+    W: 'J',
+    X: 'K',
+    Y: 'L',
+    Z: 'M',
+    ' ': ' ',
+    '!': '!',
+    '?': '?',
+    ',': ',',
+    ';': ';',
+    ':': ':'
+  };
+  var message = '';
+  string.split('').forEach(function (c) {
+    if (c in key) {
+      message += (key[c]);
+    }
+  });
+  return message;
 }
