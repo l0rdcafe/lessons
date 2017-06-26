@@ -36,7 +36,7 @@ function isVowel(char) {
 
 // #5
 function translate(string) {
-  var pattern = /([^aeiouAEIOU\s\d])/g;
+  var pattern = /((?=\w+)(?:[^aeiouAEIOU\d_]))/g;
   if (pattern.test(string)) {
     return string.replace(pattern, '$1' + 'o' + '$1');
   }
@@ -197,9 +197,11 @@ function swedishTranslate(string) {
     new: 'nytt',
     year: 'år'
   };
-  var pattern = /\w+/g;
-  if (pattern.test(string) in xmasDict) {
-    string.replace(pattern, xmasDict);
+  var pattern = /([A-Za-z])+/g;
+  for (var key in xmasDict) {
+    if (pattern.test(key)) {
+      return string.replace(pattern, xmasDict[key]);
+    }
   }
 }
 
@@ -290,7 +292,40 @@ function decode(string) {
   return message;
 }
 
+// #22
+function correct(string) {
+  var pattern = /(\s+)|(\.)/g;
+  return string.replace(pattern, '$2' + ' ');
+}
+
+// #23
+function make3sgForm(string) {
+  var pattern1 = /([(sh)o(ch)sxz]+$)/g;
+  var pattern2 = /(y)$/g;
+  if (pattern1.test(string)) {
+    return string.replace(pattern1, '$1' + 'es');
+  } else if (pattern2.test(string)) {
+    return string.replace(pattern2, 'ies');
+  }
+  return string + 's';
+}
+
 // #24
+function makeIngForm(string) {
+  var pattern1 = /[^(be|see|flee|knee)]/g;
+  var pattern2 = /(ie$)/g;
+  var pattern3 = /([aeiouAEIOU]([^aeiouAEIOU]$))/g;
+  if (string.endsWith('e') && !(pattern1.test(string))) {
+    return string.replace(/(e$)/g, '$1' + 'ing');
+  } else if (pattern2.test(string)) {
+    return string.replace(pattern2, 'ying');
+  } else if (pattern3.test(string)) {
+    return string.replace(pattern3, '$1' + '$2' + 'ing');
+  }
+  return string + 'ing';
+}
+
+// #25
 function map(array, func) {
   var mappedArray = [];
   array.forEach(function (item) {
