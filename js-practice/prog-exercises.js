@@ -64,10 +64,7 @@ function reverse(string) {
 
 // #8
 function isPalindrome(string) {
-  if (string.split('').reverse().join('') === string) {
-    return true;
-  }
-  return false;
+  return string.split('').reverse().join('') === string;
 }
 
 // #9
@@ -142,9 +139,7 @@ function findLongestWord(array) {
 // #16
 function filterLongWords(n, array) {
   return array.filter(function (a) {
-    if (a.length > n) {
-      return a;
-    }
+    return a.length > n;
   });
 }
 
@@ -157,10 +152,7 @@ function phrasePalindrome(string) {
       charString.push(char);
     }
   });
-  if (charString.join('') === charString.reverse().join('')) {
-    return true;
-  }
-  return false;
+  return charString.join('') === charString.reverse().join('');
 }
 
 // #18
@@ -216,7 +208,7 @@ function charFreq(string) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var stringChars = {};
   var counter = 1;
-  string.toLowerCase().split('').filter(function (c) {
+  string.toLowerCase().split('').forEach(function (c) {
     for (i = 0; i < alphabet.length; i += 1) {
       if (c === alphabet[i]) {
         stringChars[c] = counter;
@@ -299,28 +291,28 @@ function decode(string) {
 }
 
 // #24
-function map(array, a) {
+function map(array, func) {
   var mappedArray = [];
-  array.forEach(function (b) {
-    mappedArray.push(a(b));
+  array.forEach(function (item) {
+    mappedArray.push(func(item));
   });
   return mappedArray;
 }
 
-function filter(array, a) {
+function filter(array, func) {
   var filteredArray = [];
-  array.forEach(function (b) {
-    if (a(b)) {
-      filteredArray.push(b);
+  array.forEach(function (item) {
+    if (func(item)) {
+      filteredArray.push(item);
     }
   });
   return filteredArray;
 }
 
-function reduce(array, a, start) {
+function reduce(array, func, start) {
   var result = start;
-  array.forEach(function (b) {
-    result = a(result, b);
+  array.forEach(function (item) {
+    result = func(result, item);
   });
   return result;
 }
