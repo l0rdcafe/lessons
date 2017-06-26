@@ -35,6 +35,14 @@ function isVowel(char) {
 }
 
 // #5
+function translate(string) {
+  var pattern = /([^aeiouAEIOU\s\d])/g;
+  if (pattern.test(string)) {
+    return string.replace(pattern, '$1' + 'o' + '$1');
+  }
+}
+
+// #6
 function sum(array) {
   var addz = array.reduce(function (a, b) {
     return a + b;
@@ -49,12 +57,12 @@ function multiply(array) {
   return product;
 }
 
-// #6
+// #7
 function reverse(string) {
   return string.split('').reverse().join('');
 }
 
-// #7
+// #8
 function isPalindrome(string) {
   if (string.split('').reverse().join('') === string) {
     return true;
@@ -62,7 +70,7 @@ function isPalindrome(string) {
   return false;
 }
 
-// #8
+// #9
 function isMember(x, a) {
   var result = false;
   a.forEach(function (b) {
@@ -73,7 +81,7 @@ function isMember(x, a) {
   return result;
 }
 
-// #9
+// #10
 function overlapping(list1, list2) {
   var result = false;
   list1.forEach(function (a) {
@@ -86,7 +94,7 @@ function overlapping(list1, list2) {
   return result;
 }
 
-// #10
+// #11
 function generateNChars(n, char) {
   var result = '';
   for (i = 0; i < n; i += 1) {
@@ -95,7 +103,7 @@ function generateNChars(n, char) {
   return result;
 }
 
-// #11
+// #12
 function histogram(array) {
   var result = '';
   array.forEach(function (a) {
@@ -107,14 +115,14 @@ function histogram(array) {
   return result;
 }
 
-// #12
+// #13
 function maxInList(array) {
   return array.reduce(function (a, b) {
     return (b > a) ? b : a;
   }, 0);
 }
 
-// #13
+// #14
 function wordsIntoLengths(array) {
   var lengthsArray = [];
   array.map(function (a) {
@@ -123,7 +131,7 @@ function wordsIntoLengths(array) {
   return lengthsArray;
 }
 
-// #14
+// #15
 function findLongestWord(array) {
   var lengthsArray = [];
   array.map(function (a) {
@@ -134,7 +142,7 @@ function findLongestWord(array) {
   }, 0);
 }
 
-// #15
+// #16
 function filterLongWords(n, array) {
   return array.filter(function (a) {
     if (a.length > n) {
@@ -143,7 +151,7 @@ function filterLongWords(n, array) {
   });
 }
 
-// #16
+// #17
 function phrasePalindrome(string) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var charString = [];
@@ -158,7 +166,7 @@ function phrasePalindrome(string) {
   return false;
 }
 
-// #17
+// #18
 function pangram(string) {
   var charLetters;
   var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -175,7 +183,7 @@ function pangram(string) {
   return true;
 }
 
-// #18
+// #19
 function beers99() {
   var beers = 99;
   var lrx1 = ' bottles of beer on the wall, ';
@@ -190,7 +198,12 @@ function beers99() {
   return song;
 }
 
-// #19
+// #20
+function swedishTranslate(array) {
+    // TBC
+}
+
+// #21
 function charFreq(string) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var stringChars = {};
@@ -206,7 +219,7 @@ function charFreq(string) {
   return stringChars;
 }
 
-// #20
+// #22
 function decode(string) {
   var key = {
     a: 'n',
@@ -275,4 +288,31 @@ function decode(string) {
     }
   });
   return message;
+}
+
+// #24
+function map(array, a) {
+  var mappedArray = [];
+  array.forEach(function (b) {
+    mappedArray.push(a(b));
+  });
+  return mappedArray;
+}
+
+function filter(array, a) {
+  var filteredArray = [];
+  array.forEach(function (b) {
+    if (a(b)) {
+      filteredArray.push(b);
+    }
+  });
+  return filteredArray;
+}
+
+function reduce(array, a, start) {
+  var result = start;
+  array.forEach(function (b) {
+    result = a(result, b);
+  });
+  return result;
 }
