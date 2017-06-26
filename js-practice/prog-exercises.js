@@ -124,18 +124,15 @@ function maxInList(array) {
 
 // #14
 function wordsIntoLengths(array) {
-  var lengthsArray = [];
-  array.map(function (a) {
-    return lengthsArray.push(a.length);
+  return array.map(function (a) {
+    return a.length;
   });
-  return lengthsArray;
 }
 
 // #15
 function findLongestWord(array) {
-  var lengthsArray = [];
-  array.map(function (a) {
-    return lengthsArray.push(a.length);
+  var lengthsArray = array.map(function (a) {
+    return a.length;
   });
   return lengthsArray.reduce(function (a, b) {
     return (b > a) ? b : a;
@@ -199,8 +196,19 @@ function beers99() {
 }
 
 // #20
-function swedishTranslate(array) {
-    // TBC
+function swedishTranslate(string) {
+  var xmasDict = {
+    merry: 'god',
+    christmas: 'jul',
+    and: 'och',
+    happy: 'gott',
+    new: 'nytt',
+    year: 'år'
+  };
+  var pattern = /\w+/g;
+  if (pattern.test(string) in xmasDict) {
+    string.replace(pattern, xmasDict);
+  }
 }
 
 // #21
