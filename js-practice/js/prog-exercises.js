@@ -1,74 +1,81 @@
+'use strict';
+
 var i;
+var progEx = {};
 // #1
-function max(a, b) {
+progEx.max = function (a, b) {
   if (a > b) {
     return a;
   }
   return b;
-}
+};
 
 // #2
-function maxOfThree(a, b, c) {
+progEx.maxOfThree = function (a, b, c) {
   if (a > b && a > c) {
     return a;
   } else if (b > a && b > c) {
     return b;
   }
   return c;
-}
+};
 
 // #3
-function length(item) {
+progEx.length = function (item) {
   return item.length;
-}
+};
 
 // #4
-function isVowel(char) {
+progEx.isVowel = function (char) {
   var result = false;
-  var vowels = ['a', 'e', 'i', 'u', 'o', 'y'];
+  var vowels = ['a', 'e', 'i', 'u', 'o'];
   vowels.forEach(function (v) {
     if (char === v) {
       result = true;
     }
   });
   return result;
-}
+};
 
 // #5
-function translate(string) {
+progEx.translate = function (string) {
   var pattern = /((?=\w+)(?:[^aeiouAEIOU\d_]))/g;
   if (pattern.test(string)) {
-    return string.replace(pattern, '$1' + 'o' + '$1');
+    return string.replace(pattern, '$1o$1');
   }
-}
+  return string;
+};
 
 // #6
-function sum(array) {
+progEx.sum = function (array) {
   var addz = array.reduce(function (a, b) {
+    if (typeof a !== 'number') {
+      return NaN;
+    }
     return a + b;
   });
   return addz;
-}
+};
 
-function multiply(array) {
+progEx.multiply = function (array) {
   var product = array.reduce(function (a, b) {
     return a * b;
   });
   return product;
-}
+};
 
 // #7
-function reverse(string) {
-  return string.split('').reverse().join('');
-}
+progEx.reverse = function (string) {
+  return string.toString().split('').reverse().join('');
+};
 
 // #8
-function isPalindrome(string) {
+progEx.isPalindrome = function (string) {
   return string.split('').reverse().join('') === string;
-}
+};
 
 // #9
-function isMember(x, a) {
+progEx.isMember = function (x, a) {
   var result = false;
   a.forEach(function (b) {
     if (x === b) {
@@ -76,10 +83,10 @@ function isMember(x, a) {
     }
   });
   return result;
-}
+};
 
 // #10
-function overlapping(list1, list2) {
+progEx.overlapping = function (list1, list2) {
   var result = false;
   list1.forEach(function (a) {
     list2.forEach(function (b) {
@@ -89,74 +96,90 @@ function overlapping(list1, list2) {
     });
   });
   return result;
-}
+};
 
 // #11
-function generateNChars(n, char) {
+progEx.generateNChars = function (n, char) {
   var result = '';
   for (i = 0; i < n; i += 1) {
     result += char;
   }
   return result;
-}
+};
 
 // #12
-function histogram(array) {
+progEx.histogram = function (array) {
   var result = '';
   array.forEach(function (a) {
-    for (i = 0; i < a; i += 1) {
-      result += '*';
+    if (/[a-zA-Z]+/g.test(a)) {
+      throw new Error('Array elements cannot contain alphabets');
+    } else {
+      for (i = 0; i < a; i += 1) {
+        result += '*';
+      }
+      result += '\n';
     }
-    result += '\n';
   });
   return result;
-}
+};
 
 // #13
-function maxInList(array) {
+progEx.maxInList = function (array) {
   return array.reduce(function (a, b) {
+    if (typeof b !== 'number') {
+      return isNaN;
+    }
     return (b > a) ? b : a;
   }, 0);
-}
+};
 
 // #14
-function wordsIntoLengths(array) {
+progEx.wordsIntoLengths = function (array) {
   return array.map(function (a) {
+    if (typeof a !== 'string') {
+      return a.toString().length;
+    }
     return a.length;
   });
-}
+};
 
 // #15
-function findLongestWord(array) {
+progEx.findLongestWord = function (array) {
   var lengthsArray = array.map(function (a) {
+    if (a !== 'string') {
+      return a.toString().length;
+    }
     return a.length;
   });
   return lengthsArray.reduce(function (a, b) {
     return (b > a) ? b : a;
   }, 0);
-}
+};
 
 // #16
-function filterLongWords(n, array) {
+progEx.filterLongWords = function (n, array) {
   return array.filter(function (a) {
+    if (typeof a !== 'string') {
+      return a.toString().length > n;
+    }
     return a.length > n;
   });
-}
+};
 
 // #17
-function phrasePalindrome(string) {
+progEx.phrasePalindrome = function (string) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var charString = [];
-  string.toLowerCase().split('').forEach(function (char) {
+  string.toString().toLowerCase().split('').forEach(function (char) {
     if (alphabet.indexOf(char) !== -1) {
       charString.push(char);
     }
   });
   return charString.join('') === charString.reverse().join('');
-}
+};
 
 // #18
-function pangram(string) {
+progEx.pangram = function (string) {
   var charLetters;
   var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var stringChars = {};
@@ -170,10 +193,10 @@ function pangram(string) {
     }
   }
   return true;
-}
+};
 
 // #19
-function beers99() {
+progEx.beers99 = function () {
   var beers = 99;
   var lrx1 = ' bottles of beer on the wall, ';
   var lrx2 = ' bottles of beer. \n';
@@ -185,10 +208,10 @@ function beers99() {
     beers -= 1;
   }
   return song;
-}
+};
 
 // #20
-function swedishTranslate(string) {
+progEx.swedishTranslate = function (array) {
   var xmasDict = {
     merry: 'god',
     christmas: 'jul',
@@ -197,32 +220,29 @@ function swedishTranslate(string) {
     new: 'nytt',
     year: 'år'
   };
-  var pattern = /([A-Za-z])+/g;
-  for (var key in xmasDict) {
-    if (pattern.test(key)) {
-      return string.replace(pattern, xmasDict[key]);
-    }
-  }
-}
+  return array.map(function (item) {
+    return xmasDict[item] ? xmasDict[item] : item;
+  }).join(' ');
+};
 
 // #21
-function charFreq(string) {
-  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+progEx.charFreq = function (string) {
+  var chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var stringChars = {};
   var counter = 1;
-  string.toLowerCase().split('').forEach(function (c) {
-    for (i = 0; i < alphabet.length; i += 1) {
-      if (c === alphabet[i]) {
+  string.toString().toLowerCase().split('').forEach(function (c) {
+    for (i = 0; i < chars.length; i += 1) {
+      if (c === chars[i]) {
         stringChars[c] = counter;
         counter += 1;
       }
     }
   });
   return stringChars;
-}
+};
 
 // #22
-function decode(string) {
+progEx.decode = function (string) {
   var key = {
     a: 'n',
     b: 'o',
@@ -290,64 +310,79 @@ function decode(string) {
     }
   });
   return message;
-}
+};
 
 // #22
-function correct(string) {
-  var pattern = /(\s+)|(\.)/g;
-  return string.replace(pattern, '$2' + ' ');
-}
+progEx.correct = function (string) {
+  var pattern = /(\s+)|([.,;:])/g;
+  return string.replace(pattern, '$2 ');
+};
 
 // #23
-function make3sgForm(string) {
+progEx.make3sgForm = function (string) {
   var pattern1 = /([(sh)o(ch)sxz]+$)/g;
   var pattern2 = /(y)$/g;
   if (pattern1.test(string)) {
-    return string.replace(pattern1, '$1' + 'es');
+    return string.replace(pattern1, '$1es');
   } else if (pattern2.test(string)) {
     return string.replace(pattern2, 'ies');
   }
+  if (string === '') {
+    return string;
+  }
   return string + 's';
-}
+};
 
 // #24
-function makeIngForm(string) {
+progEx.makeIngForm = function (string) {
   var pattern1 = /[^(be|see|flee|knee)]/g;
   var pattern2 = /(ie$)/g;
-  var pattern3 = /([aeiouAEIOU]([^aeiouAEIOU]$))/g;
+  var pattern3 = /([^aeiouAEIOU][aeiouAEIOU]([^aeiouAEIOU]$))/g;
   if (string.endsWith('e') && !(pattern1.test(string))) {
-    return string.replace(/(e$)/g, '$1' + 'ing');
+    return string.replace(/(e$)/g, '$1ing');
   } else if (pattern2.test(string)) {
     return string.replace(pattern2, 'ying');
   } else if (pattern3.test(string)) {
-    return string.replace(pattern3, '$1' + '$2' + 'ing');
+    return string.replace(pattern3, '$1$2ing');
+  }
+  if (string === '') {
+    return string;
   }
   return string + 'ing';
-}
+};
 
 // #25
-function map(array, func) {
+progEx.map = function (array, func) {
   var mappedArray = [];
+  if (!Array.isArray(array) || typeof func !== 'function') {
+    throw new Error('First argument must be an array and second a function');
+  }
   array.forEach(function (item) {
     mappedArray.push(func(item));
   });
   return mappedArray;
-}
+};
 
-function filter(array, func) {
+progEx.filter = function (array, func) {
   var filteredArray = [];
+  if (!Array.isArray(array) || typeof func !== 'function') {
+    throw new Error('First argument must be an array and second a function');
+  }
   array.forEach(function (item) {
     if (func(item)) {
       filteredArray.push(item);
     }
   });
   return filteredArray;
-}
+};
 
-function reduce(array, func, start) {
+progEx.reduce = function (array, func, start) {
   var result = start;
+  if (!Array.isArray(array) || typeof func !== 'function' || typeof start !== 'number') {
+    throw new Error('First argument must be an array, second a function and third a number');
+  }
   array.forEach(function (item) {
     result = func(result, item);
   });
   return result;
-}
+};
