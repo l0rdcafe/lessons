@@ -1,6 +1,5 @@
 'use strict';
 
-/* Chapter 2 */
 var ch2 = {};
 var ch3 = {};
 var ch4 = {};
@@ -8,6 +7,8 @@ var ch5 = {};
 var ch6 = {};
 var ch8 = {};
 var ch9 = {};
+
+/* Chapter 2 */
 
 ch2.hash7 = function () {
   var hash = '';
