@@ -9,11 +9,20 @@ describe('ch2.hash7', function () {
 });
 
 describe('ch3.min', function () {
+  it('#min should return 1 when given (2, 1)', function () {
+    expect(ch3.min(2, 1)).toEqual(1);
+  });
   it('#min should return -1 when given (-1, 0)', function () {
-    expect(ch3.min(-1, 0)).toEqual(-1);
+    expect(ch3.min(-2, -1)).toEqual(-2);
   });
   it('#min should return 0 when given (0, 0)', function () {
     expect(ch3.min(0, 0)).toEqual(0);
+  });
+  it('#min should return 0.5 when given (0.5, 0.6)', function () {
+    expect(ch3.min(0.5, 0.6)).toEqual(0.5);
+  });
+  it('#min should return -0.6 when given (-0.5, -0.6)', function () {
+    expect(ch3.min(-0.5, -0.6)).toEqual(-0.6);
   });
 });
 
@@ -75,13 +84,14 @@ describe('ch4.sum', function () {
   it('#sum should return 10 when given [1, 2, 3, 4]', function () {
     expect(ch4.sum([1, 2, 3, 4])).toEqual(10);
   });
-  it('#sum should return 7 when given [1, 2, "", 4]', function () {
-    expect(ch4.sum([1, 2, '', 4])).toEqual(7);
+  it('#sum should return -10 when given [-1, -2, -3, -4]', function () {
+    expect(ch4.sum([-1, -2, -3, -4])).toEqual(-10);
   });
-  it('#sum should return throw new error "String values are not accepted" when given [1, 2, "test", 4]', function () {
-    expect(function () {
-      ch4.sum([1, 2, 'test', 4]);
-    }).toThrow(new Error('String values are not accepted'));
+  it('#sum should return 1.25 when given [0.25, 0.75, .25]', function () {
+    expect(ch4.sum([0.25, 0.75, 0.25])).toEqual(1.25);
+  });
+  it('#sum should return -1.25 when given [-0.25, -0.75, -.25]', function () {
+    expect(ch4.sum([-0.25, -0.75, -0.25])).toEqual(-1.25);
   });
 });
 
@@ -91,14 +101,6 @@ describe('ch4.reverseArray', function () {
   });
   it('#reverseArray should return [] when given []', function () {
     expect(ch4.reverseArray([])).toEqual([]);
-  });
-  it('#reverseArray should throw new Error "Argument must be an array" when given {box: [1, 2, 3, 4], lock: true}', function () {
-    expect(function () {
-      ch4.reverseArray({
-        box: [1, 2, 3, 4],
-        lock: true
-      });
-    }).toThrow(new Error('Argument must be an array'));
   });
 });
 
@@ -115,13 +117,8 @@ describe('ch4.arrayToList', function () {
       }
     });
   });
-  it('arrayToList should throw new Error "Argument must be an array" when given {value: 10, rest: null}', function () {
-    expect(function () {
-      ch4.arrayToList({
-        value: 10,
-        rest: null
-      });
-    }).toThrow(new Error('Argument must be an array'));
+  it('#arrayToList should return {} when given []', function () {
+    expect(ch4.arrayToList([])).toEqual({});
   });
 });
 
@@ -138,10 +135,8 @@ describe('ch4.listToArray', function () {
       }
     })).toEqual([10, 20, 30]);
   });
-  it('#listToArray should throw new Error "Argument can only be an object" when given [10, 20, 30]', function () {
-    expect(function () {
-      ch4.listToArray([10, 20, 30]);
-    }).toThrow(new Error('Argument can only be an object'));
+  it('#listToArray should not return [] when given {}', function () {
+    expect(ch4.listToArray({})).not.toEqual([]);
   });
 });
 
@@ -154,11 +149,6 @@ describe('ch4.prepend', function () {
         rest: null
       }
     });
-  });
-  it('#prepend should throw new Error "Second argument can only be an object" when given ("test", [10, 20])', function () {
-    expect(function () {
-      ch4.prepend('test', [10, 20]);
-    }).toThrow(new Error('Second argument can only be an object'));
   });
 });
 
@@ -175,10 +165,11 @@ describe('ch4.nth', function () {
       }
     }, 1)).toEqual(20);
   });
-  it('#nth should throw new Error "First argument can only be an object and second a number" when given ([10, 20, 30], "test")', function () {
-    expect(function () {
-      ch4.nth([10, 20, 30], 'test');
-    }).toThrow(new Error('First argument can only be an object and second a number'));
+  it('#nth should return "" when given ({value: "", rest: {}}, 0)', function () {
+    expect(ch4.nth({
+      value: '',
+      rest: {}
+    }, 0)).toEqual('');
   });
 });
 
@@ -219,12 +210,17 @@ describe('ch5.arraysReduce', function () {
       [6]
     ])).toEqual([1, 2, 3, 4, 5, 6]);
   });
-  it('#arraysReduce should throw new Error "Argument can only be an array" when given {value: [1, 2, 3, 4, 5]}', function () {
+  it('#arraysReduce should return [] when given [[], [], []]', function () {
+    expect(ch5.arraysReduce([
+      [],
+      [],
+      []
+    ])).toEqual([]);
+  });
+  it('#arraysReduce should throw new Error "Array cannot be empty" when given []', function () {
     expect(function () {
-      ch5.arraysReduce({
-        value: [1, 2, 3, 4, 5]
-      });
-    }).toThrow(new Error('Argument can only be an array'));
+      ch5.arraysReduce([]);
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
 
@@ -232,11 +228,14 @@ describe('ch5.average', function () {
   it('#average should return 2.5 when given [1, 2, 3, 4]', function () {
     expect(ch5.average([1, 2, 3, 4])).toEqual(2.5);
   });
-  it('#average should return NaN when given [1, 2, 3, "test"]', function () {
-    expect(ch5.average([1, 2, 3, 'test'])).toEqual(NaN);
+  it('#average should return  when given [-1, -2, -3, -4]', function () {
+    expect(ch5.average([-1, -2, -3, -4])).toEqual(-2.5);
   });
-  it('#average should return when 1.5 given [1, 2, 3, ""]', function () {
-    expect(ch5.average([1, 2, 3, ''])).toEqual(1.5);
+  it('#average should return when -0.56 given [-0.34, -0.5, -.2, -1.2]', function () {
+    expect(ch5.average([-0.34, -0.5, -0.2, -1.2])).toEqual(-0.56);
+  });
+  it('#average should return 0.56 when given [0.34, 0.5, .2, 1.2]', function () {
+    expect(ch5.average([0.34, 0.5, 0.2, 1.2])).toEqual(0.56);
   });
 });
 
@@ -248,13 +247,20 @@ describe('ch5.every', function () {
   it('#every should return false when given ([1, 2, 1], 1)', function () {
     expect(ch5.every([1, 2, 1], 1)).toEqual(false);
   });
+  it('#every should return false when given ([], "")', function () {
+    expect(ch5.every([], 0)).toEqual(false);
+  });
 });
+
 describe('ch5.some', function () {
   it('#some should return true when given ([1, 2, 2], 1)', function () {
     expect(ch5.some([1, 2, 2], 1)).toEqual(true);
   });
   it('#some should return false when given (["keep", "keys", "key"], "ke")', function () {
     expect(ch5.some(['keep', 'keys', 'key'], 'ke')).toEqual(false);
+  });
+  it('#some should return false when given ([], "")', function () {
+    expect(ch5.some([], '')).toEqual(false);
   });
 });
 

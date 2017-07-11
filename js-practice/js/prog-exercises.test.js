@@ -3,26 +3,32 @@
 'use strict';
 
 describe('progEx.max', function () {
-  it('#max given 2 and 1 should equal 2', function () {
+  it('#max should return 2 when given (2, 1)', function () {
     expect(progEx.max(2, 1)).toEqual(2);
   });
-  it('#max given -1 and 0 should equal 0', function () {
-    expect(progEx.max(-1, -0.5)).toEqual(-0.5);
+  it('#max should return -0.5 when given (-1, -0.5)', function () {
+    expect(progEx.max(-1.5, -0.5)).toEqual(-0.5);
   });
-  it('#max given -10 and -5 should equal -5', function () {
+  it('#max should return -5 when given (-10, -5)', function () {
     expect(progEx.max(-10, -5)).toEqual(-5);
+  });
+  it('#max should return 2.5 when given (2.4, 2.5)', function () {
+    expect(progEx.max(2.4, 2.5)).toEqual(2.5);
   });
 });
 
 describe('progEx.maxOfThree', function () {
-  it('#maxOfThree given 1, 5 and 3 should equal 5', function () {
+  it('#maxOfThree should return 5 when given (1, 5, 3)', function () {
     expect(progEx.maxOfThree(1, 5, 3)).toEqual(5);
   });
-  it('#maxOfThree given -20, -10.12, -21 should equal -10.21', function () {
-    expect(progEx.maxOfThree(-20, -10.12, -21)).toEqual(-10.12);
+  it('#maxOfThree should return -10 when given (-20, -10, -21)', function () {
+    expect(progEx.maxOfThree(-20, -10, -21)).toEqual(-10);
   });
-  it('#maxOfThree given 10.25, 10.1 and 10.3 should equal 10.3', function () {
+  it('#maxOfThree should return 10.3 when given (10.3, 10.25, 10.1)', function () {
     expect(progEx.maxOfThree(10.3, 10.25, 10.1)).toEqual(10.3);
+  });
+  it('#maxOfThree should return -0.2 when given (-0.2, -0.5, -0.4)', function () {
+    expect(progEx.maxOfThree(-0.2, -0.5, -0.4)).toEqual(-0.2);
   });
 });
 
@@ -49,6 +55,11 @@ describe('progEx.isVowel', function () {
   it('#isVowel should return false when given "y"', function () {
     expect(progEx.isVowel('y')).toEqual(false);
   });
+  it('#isVowel should throw new Error "Argument cannot be longer than 1 character" when given "ae"', function () {
+    expect(function () {
+      progEx.isVowel('ae');
+    }).toThrow(new Error('Argument cannot be longer than 1 character'));
+  });
 });
 
 describe('progEx.translate', function () {
@@ -58,20 +69,25 @@ describe('progEx.translate', function () {
   it('#translate should return "" when given ""', function () {
     expect(progEx.translate('')).toEqual('');
   });
-  it('#translate should return 4 when given 4', function () {
-    expect(progEx.translate(4)).toEqual(4);
-  });
 });
 
 describe('progEx.sum', function () {
+  it('#sum should return -46 when given [-21, -5, -2, -10, -3, -5]', function () {
+    expect(progEx.sum([-21, -5, -2, -10, -3, -5])).toEqual(-46);
+  });
   it('#sum should return 10 when given [1, 2, 3, 4]', function () {
     expect(progEx.sum([1, 2, 3, 4])).toEqual(10);
   });
-  it('#sum should return NaN when given [1, 2, "ok", 100]', function () {
-    expect(progEx.sum([1, 2, 'ok', 100])).toEqual(NaN);
+  it('#sum should return 6.75 when given [4.25, 5.25, 3.25, 6.5, 2.5]', function () {
+    expect(progEx.sum([4.25, 5.25, 3.25, 6.5, 2.5])).toEqual(21.75);
   });
-  it('#sum should return -6 when given [-21, 5, -2, 10, -3, 5]', function () {
-    expect(progEx.sum([-21, 5, -2, 10, -3, 5])).toEqual(-6);
+  it('#sum should return -12.11 when given [-1.2, -2.2, -3.21, -5.5]', function () {
+    expect(progEx.sum([-1.2, -2.2, -3.21, -5.5])).toEqual(-12.11);
+  });
+  it('#sum should throw new Error "Array cannot be empty" when given []', function () {
+    expect(function () {
+      progEx.sum([]);
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
 
@@ -79,8 +95,19 @@ describe('progEx.multiply', function () {
   it('#multiply should return 24 when given [1, 2, 3, 4]', function () {
     expect(progEx.multiply([1, 2, 3, 4])).toEqual(24);
   });
-  it('#multiply should return -6 when given [1, 2, -3]', function () {
-    expect(progEx.multiply([1, 2, -3])).toEqual(-6);
+  it('#multiply should return -6 when given [-1, -2, -3]', function () {
+    expect(progEx.multiply([-1, -2, -3])).toEqual(-6);
+  });
+  it('#multiply should return -1.5625 when given [-0.5, -1.25, -2.5]', function () {
+    expect(progEx.multiply([-0.5, -1.25, -2.5])).toEqual(-1.5625);
+  });
+  it('#multiply should return 1.5625 when given [0.5, 1.25, 2.5]', function () {
+    expect(progEx.multiply([0.5, 1.25, 2.5])).toEqual(1.5625);
+  });
+  it('#multiply should throw new Error "Array cannot be empty" when given []', function () {
+    expect(function () {
+      progEx.multiply([]);
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
 
@@ -118,6 +145,12 @@ describe('progEx.isMember', function () {
   it('#isMember should return false when given ("yea", ["yeah", "maybe", "okay", "ye"])', function () {
     expect(progEx.isMember('yea', ['yeah', 'maybe', 'okay', 'ye'])).toEqual(false);
   });
+  it('#isMember should return false when given (0, [])', function () {
+    expect(progEx.isMember(0, [])).toEqual(false);
+  });
+  it('#isMember should return true when given ("", ["", NaN, 2])', function () {
+    expect(progEx.isMember('', ['', NaN, 2])).toEqual(true);
+  });
 });
 
 describe('progEx.overlapping', function () {
@@ -151,23 +184,24 @@ describe('progEx.histogram', function () {
   it('#histogram should return "\n***\n**\n" when given [3, 0, 2]', function () {
     expect(progEx.histogram([3, 0, 2])).toEqual('***\n\n**\n');
   });
-  it('#histogram should return "\n\n**\n" when given ["", 0, 2]',
+  it('#histogram should return "" when given []',
     function () {
-      expect(progEx.histogram(['', 0, 2])).toEqual('\n\n**\n');
+      expect(progEx.histogram([])).toEqual('');
     });
-  it('#histogram should throw new Error "Array elements cannot contain alphabets" when given [2, 9, "big"]', function () {
-    expect(function () {
-      progEx.histogram([2, 9, 'big']);
-    }).toThrow(new Error('Array elements cannot contain alphabets'));
-  });
 });
 
 describe('progEx.maxInList', function () {
-  it('#maxInList should return 0.5 when given [-2, 0.5, -2.9]', function () {
-    expect(progEx.maxInList([-2, 0.5, -2.9])).toEqual(0.5);
+  it('#maxInList should return -0.5 when given [-2, -0.5, -2.9]', function () {
+    expect(progEx.maxInList([-2.22, -0.5, -2.9])).toEqual(-0.5);
   });
-  it('#maxInList should return isNaN when ["words", 2, 5, -20]', function () {
-    expect(progEx.maxInList(['words', 2, 5, -20])).toEqual(isNaN);
+  it('#maxInList should return 20 when [2, 5, 20]', function () {
+    expect(progEx.maxInList([2, 5, 20])).toEqual(20);
+  });
+  it('#maxInList should return -2 when given [-5, -3, -2]', function () {
+    expect(progEx.maxInList([-5, -3, -2])).toEqual(-2);
+  });
+  it('#maxInList should return 1.5 when given [0.5, 1.5, 1.4]', function () {
+    expect(progEx.maxInList([0.5, 1.5, 1.4])).toEqual(1.5);
   });
 });
 
@@ -181,6 +215,9 @@ describe('progEx.wordsIntoLengths', function () {
   it('#wordsIntoLengths should return [5, 0, 6] when given ["super", "", "cooper"]', function () {
     expect(progEx.wordsIntoLengths(['super', '', 'cooper'])).toEqual([5, 0, 6]);
   });
+  it('#wordsIntoLengths should return [] when given []', function () {
+    expect(progEx.wordsIntoLengths([])).toEqual([]);
+  });
 });
 
 describe('progEx.findLongestWord', function () {
@@ -193,6 +230,11 @@ describe('progEx.findLongestWord', function () {
   it('#findLongestWord should return 5 when given [true, false, NaN]', function () {
     expect(progEx.findLongestWord([true, false, NaN])).toEqual(5);
   });
+  it('#findLongestWord should throw new Error "Array cannot be empty" when given []', function () {
+    expect(function () {
+      progEx.findLongestWord([]);
+    }).toThrow(new Error('Array cannot be empty'));
+  });
 });
 
 describe('progEx.filterLongWords', function () {
@@ -201,6 +243,14 @@ describe('progEx.filterLongWords', function () {
   });
   it('#filterLongWords should return ["and", 1992, 2109123, "program"] when given (2, ["an", "and", 12, 1992, 2109123, "program", "it"])', function () {
     expect(progEx.filterLongWords(2, ['an', 'and', 12, 1992, 2109123, 'program', 'it'])).toEqual(['and', 1992, 2109123, 'program']);
+  });
+  it('#filterLongWords should throw new Error "Array cannot be empty" when given (10, [])', function () {
+    expect(function () {
+      progEx.filterLongWords(10, []);
+    }).toThrow(new Error('Array cannot be empty'));
+  });
+  it('#filterLongWords should return ["this", "is", "a", "full", "array"] when given (0, ["this", "is", "a", "full", "array"])', function () {
+    expect(progEx.filterLongWords(0, ['this', 'is', 'a', 'full', 'array'])).toEqual(['this', 'is', 'a', 'full', 'array']);
   });
 });
 
@@ -240,9 +290,6 @@ describe('progEx.swedishTranslate', function () {
   });
   it('#swedishTranslate should return "gott nytt decade" when given ["happy", "new", "decade"]', function () {
     expect(progEx.swedishTranslate(['happy', 'new', 'decade'])).toEqual('gott nytt decade');
-  });
-  it('#swedishTranslate should return "12 21 2012" when given [12, 21, 2012]', function () {
-    expect(progEx.swedishTranslate([12, 21, 2012])).toEqual('12 21 2012');
   });
 });
 
@@ -319,13 +366,12 @@ describe('progEx.map', function () {
       return a.length;
     })).toEqual([4, 5, 6]);
   });
-  it('#map should throw new Error "First argument must be an array and second a function" when given ({name: "dude", occupation: "duder"}, [1, 2, 3])', function () {
+  it('#map should throw new Error "Array cannot be empty" when given ([], function () {return a;})', function () {
     expect(function () {
-      progEx.map({
-        name: 'dude',
-        occupation: 'duder'
-      }, [1, 2, 3]);
-    }).toThrow(new Error('First argument must be an array and second a function'));
+      progEx.map([], function (a) {
+        return a;
+      });
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
 
@@ -335,13 +381,12 @@ describe('progEx.filter', function () {
       return a.length > 5;
     })).toEqual(['opening', 'ceremony', 'closing']);
   });
-  it('#filter should throw new Error "First argument must be an array and second a function" when given ({person: "tall", job: "librarian"}, "6\'1")', function () {
+  it('#filter should throw new Error "Array cannot be empty" when given ([], function (a) {return a;})', function () {
     expect(function () {
-      progEx.filter({
-        person: 'tall',
-        job: 'librarian'
-      }, '6\'1');
-    }).toThrow(new Error('First argument must be an array and second a function'));
+      progEx.filter([], function (a) {
+        return a;
+      });
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
 
@@ -351,11 +396,11 @@ describe('progEx.reduce', function () {
       return a + b;
     }, 0)).toEqual(10);
   });
-  it('#reduce should throw new Error "First argument must be an array, second a function and third a number" when given (function (a, b) {return a + b;}, 0, [1, 2, 3, 4])', function () {
+  it('#reduce should throw new Error "Array cannot be empty" when given ([], function (a) {return a;}, 0))', function () {
     expect(function () {
-      progEx.reduce(function (a, b) {
-        return a + b;
-      }, 0, [1, 2, 3, 4]);
-    }).toThrow(new Error('First argument must be an array, second a function and third a number'));
+      progEx.reduce([], function (a) {
+        return a;
+      }, 0);
+    }).toThrow(new Error('Array cannot be empty'));
   });
 });
