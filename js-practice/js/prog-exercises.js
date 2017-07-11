@@ -29,6 +29,9 @@ progEx.length = function (item) {
 progEx.isVowel = function (char) {
   var result = false;
   var vowels = ['a', 'e', 'i', 'u', 'o'];
+  if (char.length > 1) {
+    throw new Error('Argument cannot be longer than 1 character');
+  }
   vowels.forEach(function (v) {
     if (char === v) {
       result = true;
@@ -48,20 +51,21 @@ progEx.translate = function (string) {
 
 // #6
 progEx.sum = function (array) {
-  var addz = array.reduce(function (a, b) {
-    if (typeof a !== 'number') {
-      return NaN;
-    }
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
+  }
+  return array.reduce(function (a, b) {
     return a + b;
   });
-  return addz;
 };
 
 progEx.multiply = function (array) {
-  var product = array.reduce(function (a, b) {
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
+  }
+  return array.reduce(function (a, b) {
     return a * b;
   });
-  return product;
 };
 
 // #7
@@ -111,14 +115,10 @@ progEx.generateNChars = function (n, char) {
 progEx.histogram = function (array) {
   var result = '';
   array.forEach(function (a) {
-    if (/[a-zA-Z]+/g.test(a)) {
-      throw new Error('Array elements cannot contain alphabets');
-    } else {
-      for (i = 0; i < a; i += 1) {
-        result += '*';
-      }
-      result += '\n';
+    for (i = 0; i < a; i += 1) {
+      result += '*';
     }
+    result += '\n';
   });
   return result;
 };
@@ -126,11 +126,8 @@ progEx.histogram = function (array) {
 // #13
 progEx.maxInList = function (array) {
   return array.reduce(function (a, b) {
-    if (typeof b !== 'number') {
-      return isNaN;
-    }
     return (b > a) ? b : a;
-  }, 0);
+  }, Number.NEGATIVE_INFINITY);
 };
 
 // #14
@@ -145,7 +142,11 @@ progEx.wordsIntoLengths = function (array) {
 
 // #15
 progEx.findLongestWord = function (array) {
-  var lengthsArray = array.map(function (a) {
+  var lengthsArray;
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
+  }
+  lengthsArray = array.map(function (a) {
     if (a !== 'string') {
       return a.toString().length;
     }
@@ -158,6 +159,9 @@ progEx.findLongestWord = function (array) {
 
 // #16
 progEx.filterLongWords = function (n, array) {
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
+  }
   return array.filter(function (a) {
     if (typeof a !== 'string') {
       return a.toString().length > n;
@@ -354,8 +358,8 @@ progEx.makeIngForm = function (string) {
 // #25
 progEx.map = function (array, func) {
   var mappedArray = [];
-  if (!Array.isArray(array) || typeof func !== 'function') {
-    throw new Error('First argument must be an array and second a function');
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
   }
   array.forEach(function (item) {
     mappedArray.push(func(item));
@@ -365,8 +369,8 @@ progEx.map = function (array, func) {
 
 progEx.filter = function (array, func) {
   var filteredArray = [];
-  if (!Array.isArray(array) || typeof func !== 'function') {
-    throw new Error('First argument must be an array and second a function');
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
   }
   array.forEach(function (item) {
     if (func(item)) {
@@ -378,8 +382,8 @@ progEx.filter = function (array, func) {
 
 progEx.reduce = function (array, func, start) {
   var result = start;
-  if (!Array.isArray(array) || typeof func !== 'function' || typeof start !== 'number') {
-    throw new Error('First argument must be an array, second a function and third a number');
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
   }
   array.forEach(function (item) {
     result = func(result, item);

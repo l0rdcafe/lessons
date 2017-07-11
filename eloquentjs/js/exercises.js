@@ -184,9 +184,6 @@ ch4.listToArray = function (list) {
 
 ch4.prepend = function (element, list) {
   var returnList;
-  if ((typeof list !== 'object' || Array.isArray(list))) {
-    throw new Error('Second argument can only be an object');
-  }
   returnList = {
     value: element,
     rest: list
@@ -197,9 +194,6 @@ ch4.prepend = function (element, list) {
 ch4.nth = function (list, number) {
   var tempList;
   var i;
-  if ((typeof list !== 'object' || Array.isArray(list)) || typeof number !== 'number') {
-    throw new Error('First argument can only be an object and second a number');
-  }
   tempList = list;
   for (i = 0; i < number; i += 1) {
     tempList = tempList.rest;
@@ -234,8 +228,8 @@ ch4.deepEqual = function (obj1, obj2) {
 /* Chapter 5 */
 
 ch5.arraysReduce = function (array) {
-  if (!Array.isArray(array)) {
-    throw new Error('Argument can only be an array');
+  if (array.length === 0) {
+    throw new Error('Array cannot be empty');
   }
   return array.reduce(function (a, b) {
     return a.concat(b);
@@ -256,6 +250,9 @@ ch5.average = function (array) {
 
 ch5.every = function (array, condition) {
   var result = true;
+  if (array.length === 0) {
+    result = false;
+  }
   array.forEach(function (value) {
     if (value !== condition) {
       result = false;
