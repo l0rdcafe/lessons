@@ -7,6 +7,7 @@ var ch5 = {};
 var ch6 = {};
 var ch8 = {};
 var ch9 = {};
+var ch10 = {};
 
 /* Chapter 2 */
 
@@ -439,3 +440,5 @@ ch9.ex6 = /[a-z]{7,}/g;
 ch9.ex7 = /\b([^e\s]+)\b/g;
 ch9.reg2 = /\W'|'\W|^[']/g;
 ch9.regNum = /^([\-+]?\d+(\.\d*)?([eE][\-+]?\d+)?|\.\d+)$/g;
+
+/* Chapter 10 */
