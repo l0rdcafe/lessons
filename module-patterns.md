@@ -17,3 +17,7 @@ When writing new **design patterns** one should consider some points, the practi
 # What are **anti-patterns**?
 
 **Anti-patterns** describe a bad solution to a problem resulting in a bad situation, or describing how to get out of said bad situation and get to a good solution. A perfect design could itself be an **anti-pattern** due to its application _context_. Examples of **anti-patterns** in **JavaScript** are polluting the global _namespace_ by defining a lot of **variables** in the _global context_. Passing strings to `setTimeout` or `setInterval` as it triggers the use of `eval()` internally. Modifying the `Object` class prototype is also an **anti-pattern**. The use of **JavaScript** in an inline form as it's not flexible. The use `document.write` is also an **anti-pattern** because it writes to the **DOM** after the whole page has loaded, adversely affecting performance.
+
+# What's the **facade pattern**?
+
+The **facade pattern** is an API design pattern that shows what the library user should use through exposing simple methods that hide unnecessary code to its function, improving usability and obscuring the private parts that shouldn't be available to the outside world.
