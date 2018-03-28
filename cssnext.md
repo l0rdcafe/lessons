@@ -1,0 +1,3 @@
+# What is **CSSNext**?
+
+**CSSNext** is the latest syntax of the _CSS_ spec. Using its **PostCSS** plugin, it enables **CSS4** features such as `:matches` pseudo class selector, custom properties (applied using `@apply`) and variables (using `var(--colorVar)`), 8-digit hex values for colors, `:not` pseudo class selector, custom selectors, custom media queries using variable breakpoints and/or with ranges, automatic vendor prefixes, reduced `calc()` using defined variables, nesting, `image-set()` to set different images depending on device resolution, `color()` function transpiling to `rgba()`, `gray()`, `filter` property and blend modes, as well as other new features.
