@@ -1,0 +1,7 @@
+# What is **Holochain**?
+
+**Holochain** is a framework for building distributed peer-to-peer applications. Like **blockchain**, **holochain** has a similarly decentralized system, where users maintain the transaction history of the network. As a **blockchain** system grows, it gets less efficient. But with **holochain**, the opposite is true. **Holochain** is a post-blockchain technology that does not use _proof of work_ or _proof of stake_. Instead of all the nodes in the chain doing all the work of validating the same transaction chain, in **holochain** each node has its own chain, and all the changes it happens to its chain broadcast  to a distributed chain. **Holochain** implements a **DHT** but unlike its application in torrents, it's a validating **DHT** that is also sharded. Sharding is also not possible with **blockchain**, giving **holochain** a leg up in that respect. Each node validates its chain against other chains and its neighbors'. This approach makes **holochain** scaleable, resilient and more efficient. Unlike **blockchain's** data-centric model, **holochain's** model is agent-centric.
+
+## What is a **distributed hash table**?
+
+A **distributed hash table** or **DHT** is a class of a decentralized distributed system that provides a lookup like a hash table (key, value), where any node can retrieve the value associated with a key. **DHT's** have a wide variety of applications from _BitTorrent_ to more recent technologies such as **holochain**.
