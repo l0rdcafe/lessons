@@ -20,7 +20,7 @@ child ordering of components, which could something to investigate during implem
 
 # Code Example
 
-```tsc
+```ts
 const Link: FunctionComponent<{ url: string }> = ({ url, ...props }) => {
   return <a href={url} {...props} />
 }
