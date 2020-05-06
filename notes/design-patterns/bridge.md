@@ -27,5 +27,5 @@ class SingleAppClient {
 }
 
 const getTokenImplementation = async (): Promise<string> => 'token'
-const singleAppClient = new SingleAppClient()
+const singleAppClient = new SingleAppClient(getTokenImplementation)
 ```
