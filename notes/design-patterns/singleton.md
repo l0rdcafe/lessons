@@ -13,7 +13,7 @@ will have access to its singleton parent instance.
 
 # Code Example
 
-```
+```ts
 // featureFlags.ts
 const useFeatureFlags = (): FeatureFlagProvider => {
   // Global point of access to Singleton

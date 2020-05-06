@@ -17,7 +17,7 @@ to clients.
 
 # Code Example
 
-```
+```ts
   function mapMenuItems(item: ServerMenuItem): ClientMenuItem {
     const {
       modifierGroups,

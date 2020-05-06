@@ -19,7 +19,7 @@ method on the prototype itself.
 
 ### Code Example
 
-```
+```ts
 Object.prototype.foo = "foo";
 const person = {
   name: "bar"
